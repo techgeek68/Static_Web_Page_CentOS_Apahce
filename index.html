@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Static Website</title>
+  <style>
+    /* Background animation */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0f3, #c9ffbf);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      text-align: center;
+      color: #333;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    #jokeDisplay {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      min-height: 2rem;
+    }
+    .confetti {
+      position: fixed;
+      top: -2rem;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: fall linear;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to the Fun Zone!</h1>
+    <button class="button" id="jokeBtn">Tell Me a Joke 🤡</button>
+    <button class="button" id="partyBtn">Party Mode 🎉</button>
+    <div id="jokeDisplay"></div>
+  </header>
+
+  <script>
+    const jokes = [
+      "Why don’t scientists trust atoms? Because they make up everything! 😜",
+      "I told my computer I needed a break, and it said 'No problem — I'll go to sleep.' 💤",
+      "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+      "Why was the math book sad? It had too many problems. 😅"
+    ];
+
+    document.getElementById('jokeBtn').addEventListener('click', () => {
+      const random = jokes[Math.floor(Math.random() * jokes.length)];
+      document.getElementById('jokeDisplay').textContent = random;
+    });
+
+    let partyOn = false;
+    const emojis = ['🎉', '✨', '🎈', '🌟'];
+    let confettiInterval;
+
+    document.getElementById('partyBtn').addEventListener('click', () => {
+      partyOn = !partyOn;
+      if (partyOn) {
+        document.getElementById('partyBtn').textContent = 'Stop Party 🚫';
+        confettiInterval = setInterval(createConfetti, 200);
+      } else {
+        document.getElementById('partyBtn').textContent = 'Party Mode 🎉';
+        clearInterval(confettiInterval);
+      }
+    });
+
+    function createConfetti() {
+      const span = document.createElement('span');
+      span.classList.add('confetti');
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = 2 + Math.random() * 3 + 's';
+      span.style.fontSize = 1 + Math.random() * 1.5 + 'rem';
+      document.body.appendChild(span);
+      setTimeout(() => span.remove(), 6000);
+    }
+  </script>
+</body>
+</html>
