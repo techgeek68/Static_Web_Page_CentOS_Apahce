@@ -1,5 +1,4 @@
-markdown
-	# My First Fun Static Website
+# My First Fun Static Website
 
 	A colorful interactive static website with animations, jokes, and party mode!
 
