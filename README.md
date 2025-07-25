@@ -1,4 +1,4 @@
-# My First Fun Static Website
+# Fun Static Website
 
 	A colorful interactive static website with animations, jokes, and party mode!
 
@@ -10,6 +10,9 @@
 	- CSS animations and transitions
 
 ## Technologies Used
+	- UTM
+	- CentOS Stream 10
+ 	- Apache Web Server 
 	- HTML5
 	- CSS3 (Animations, Gradients)
 	- JavaScript (DOM Manipulation)
